@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kontrollera en utlämnad fil | Kansliteknik</title>
+<meta name="description" content="Gratis program som kontrollerar att en utlämnad PDF saknar dold text, kommentarer, bilagor och tidigare versioner, och att den stämmer med kvittot. Ingen installation, inget nät.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+{{topp}}
+{{pilotband}}
+<main id="innehall">
+
+<section class="band">
+  <div class="inne las">
+    <h1>Kontrollera en utlämnad fil</h1>
+    <p class="ingress">För dig som tar emot en handling: mottagare, dataskyddsombud eller jurist. Programmet är gratis, kräver ingen installation och skickar inget över nätet.</p>
+    <p>Du behöver inte ha Utlämna. Programmet läser bara filen eller mappen du pekar ut.</p>
+    <div class="ruta varning">
+      <p><strong>Ladda inte upp handlingen någonstans för att kontrollera den.</strong> Den här sidan kan inte ta emot filer. Programmet körs på din egen dator.</p>
+    </div>
+
+    {{nedladdning_block}}
+  </div>
+</section>
+
+<section class="band vit">
+  <div class="inne">
+    <h2>Så gör du</h2>
+    <ol class="steg">
+      <li><strong>Hämta programmet och kontrollera kontrollsumman</strong>Kontrollsumman ska stämma med den som står ovan. Så vet du att filen är densamma som vi publicerat.</li>
+      <li><strong>Dra filen eller hela paketmappen till programikonen</strong>Mappen är den som Utlämna skapar och som innehåller <code>maskad.pdf</code>, <code>logg.pdf</code>, <code>logg.json</code> och <code>kvitto.txt</code>. Får programmet hela mappen kontrollerar det också att filen stämmer med kvittot och loggen.</li>
+      <li><strong>Läs rapporten</strong>Varje kontroll visas för sig, med resultat <em>OK</em> eller <em>FEL</em> och en mening om varför. Sist står <em>GODKÄND</em> eller <em>UNDERKÄND</em>.</li>
+    </ol>
+
+    <h2 class="ny-rubrik">Vad som kontrolleras</h2>
+    <div class="tabellram">
+      <table>
+        <thead><tr><th scope="col">Kontroll</th><th scope="col">Godkänd betyder</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Textlager</th><td>Ingen sida har text som kan markeras, kopieras eller sökas.</td></tr>
+          <tr><th scope="row">Typsnitt</th><td>Filen innehåller inga typsnitt.</td></tr>
+          <tr><th scope="row">Plattad till bild</th><td>Varje sida består bara av bilder.</td></tr>
+          <tr><th scope="row">Versioner</th><td>En enda version. Inga äldre versioner ligger kvar i filen.</td></tr>
+          <tr><th scope="row">Dolt innehåll</th><td>Inga kommentarer, bilagor, formulär, JavaScript, metadata eller dolda lager.</td></tr>
+          <tr><th scope="row">Sökta uppgifter</th><td>Uppgifter du själv anger, till exempel ett personnummer, finns inte i filen.</td></tr>
+          <tr><th scope="row">Kvitto <span class="dov">(hel mapp)</span></th><td><code>maskad.pdf</code> har samma kontrollsumma som i <code>kvitto.txt</code>.</td></tr>
+          <tr><th scope="row">Logg <span class="dov">(hel mapp)</span></th><td><code>maskad.pdf</code> är den fil som <code>logg.json</code> beskriver.</td></tr>
+          <tr><th scope="row">Pixelkontroll vid export <span class="dov">(hel mapp)</span></th><td>Enligt loggen var alla maskade rutor svarta när filen skapades.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="ruta">
+      <p><strong>Vad kontrollen inte visar.</strong> Att det som syns i bilden är rätt maskat. Det avgörs av sekretessprövningen, och den har en handläggare gjort. Rapporten säger det på sista raden varje gång.</p>
+    </div>
+    <p class="las">Raden om pixelkontroll bygger på loggen, inte på en egen mätning: programmet har inte originalet att jämföra med.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inne">
+    <h2>Prova på tre påhittade filer</h2>
+    <p class="las">Hämta filerna och dra dem till programmet. Du ska få resultaten i tabellen.</p>
+    <div class="tabellram">
+      <table>
+        <thead><tr><th scope="col">Fil</th><th scope="col">Vad det är</th><th scope="col">Förväntat resultat</th></tr></thead>
+        <tbody>
+          <tr><th scope="row"><a href="exempel/kontroll-godkand.pdf" download>kontroll-godkand.pdf</a></th><td>Maskad och plattad till bild.</td><td class="ok">Godkänd</td></tr>
+          <tr><th scope="row"><a href="exempel/kontroll-underkand-text.pdf" download>kontroll-underkand-text.pdf</a></th><td>Svarta rutor ovanpå text.</td><td class="nej">Underkänd: textlager och typsnitt finns kvar</td></tr>
+          <tr><th scope="row"><a href="exempel/kontroll-underkand-dolt.pdf" download>kontroll-underkand-dolt.pdf</a></th><td>Ren bild, men med kommentar, bilaga, metadata och en tidigare version.</td><td class="nej">Underkänd: dolt innehåll och versioner</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="liten dov">Alla personer och nummer är påhittade. Personnumren har födelsedatum år 2031 och kan inte tillhöra någon verklig person. <a href="exempel/OM-FILERNA.txt">Om filerna</a>.</p>
+  </div>
+</section>
+
+<section class="band vit">
+  <div class="inne las">
+    <h2>Från kommandotolken</h2>
+    <p>För skript och diarier finns samma kontroller som kommandorad.</p>
+<pre>utlamna-kontroll maskad.pdf
+utlamna-kontroll "utlamning-SN-2026-0418-20261003-1412"
+utlamna-kontroll maskad.pdf --sok 20310414-1233 --sok "Sara Andersson"
+utlamna-kontroll paketmapp --json</pre>
+    <p>Utgångskod 0 betyder godkänd, 1 underkänd och 2 fel i anropet. Du kan blockera programmet i brandväggen om du vill. Det ska fungera ändå.</p>
+  </div>
+</section>
+
+</main>
+{{fot}}
+</body>
+</html>

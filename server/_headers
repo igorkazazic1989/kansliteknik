@@ -1,0 +1,12 @@
+# Samma rubriker för statiska värdar som läser en _headers-fil (t.ex. Netlify och Cloudflare Pages).
+# Välj värd med omsorg: var servrarna står och vem som äger bolaget avgör vad löftet om EU är värt.
+# Kontrollera också att värden inte själv samlar in besöksstatistik eller loggar IP-adresser.
+/*
+  Content-Security-Policy: default-src 'none'; img-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'
+  Referrer-Policy: no-referrer
+  X-Content-Type-Options: nosniff
+  Permissions-Policy: geolocation=(), camera=(), microphone=(), interest-cohort=()
+  Strict-Transport-Security: max-age=31536000
+
+/nedladdning/*
+  Content-Disposition: attachment

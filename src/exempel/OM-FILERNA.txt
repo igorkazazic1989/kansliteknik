@@ -1,0 +1,9 @@
+Exempelfiler till Utlämna och utlamna-kontroll
+
+Alla personer, nummer och adresser är påhittade.
+Personnumren har födelsedatum år 2031, så de kan inte tillhöra någon verklig person.
+
+testakt-skannad.pdf            En skannad akt, bara bilder. Mata Utlämna med den.
+kontroll-godkand.pdf           Maskad och plattad till bild. Kontrollverktyget ska godkänna den.
+kontroll-underkand-text.pdf    Svarta rutor ovanpå text. Kontrollverktyget ska underkänna den.
+kontroll-underkand-dolt.pdf    Ren bild, men med dolt innehåll. Kontrollverktyget ska underkänna den.

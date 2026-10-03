@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Säkerhet: vad som kontrolleras och vad som inte gör det | Kansliteknik</title>
+<meta name="description" content="Hur Utlämna håller allt på den egna datorn, hur maskningen görs permanent och kontrolleras, och vad programmet inte gör.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+{{topp}}
+{{pilotband}}
+<main id="innehall">
+
+<section class="band">
+  <div class="inne las">
+    <h1>Säkerhet: vad som kontrolleras och vad som inte gör det</h1>
+    <p class="ingress">Den här sidan är till för er IT-avdelning, ert dataskyddsombud och er jurist. Den säger vad Utlämna gör, hur ni kan kontrollera det, och var gränserna går.</p>
+  </div>
+</section>
+
+<section class="band vit">
+  <div class="inne las">
+    <h2>Allt körs på datorn</h2>
+    <ul class="rak">
+      <li>Programmet kräver ingen server och inget konto. Det finns ingen inloggning och ingen telemetri.</li>
+      <li>Maskningsmotorn startar som ett lokalt program som bara lyssnar på den egna datorn (<code>127.0.0.1</code>), på en slumpad port.</li>
+      <li>Appen vägrar anropa någon annan adress, och webbvyns säkerhetspolicy tillåter inga externa anrop.</li>
+      <li>Inga uppdateringar hämtas över nätet. En ny version kommer som installationsfil, som er IT rullar ut.</li>
+    </ul>
+    <h3>Så kan ni kontrollera det</h3>
+    <ul class="rak">
+      <li>Blockera appens och motorns utgående trafik i brandväggen och kör ett ärende från början till slut. Det ska fungera.</li>
+      <li>Titta på öppna anslutningar medan appen kör (<code>netstat -ano</code>). Motorn ska bara lyssna på <code>127.0.0.1</code>.</li>
+      <li>Läs loggen: den anger motorns version och kontrollsumma för varje utlämning.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inne las">
+    <h2>Maskningen är permanent</h2>
+    <p>En maskad uppgift tas bort ur filens innehåll. Sedan görs varje sida om till en bild, så att det inte finns något textlager kvar. Innan paketet skrivs kontrolleras resultatet:</p>
+    <ul class="rak">
+      <li>Ingen sida har textoperatorer, och filen innehåller inga typsnitt.</li>
+      <li>Inga kommentarer, bilagor, formulär, JavaScript, metadata eller tidigare versioner följer med.</li>
+      <li>Varje maskad uppgift söks i filens alla byte. Hittas den, skapas inget paket.</li>
+      <li>Appen renderar den färdiga filen och mäter att varje maskad ruta är svart. Rutorna växer först till hela ordet, eftersom OCR-lagrets rutor ofta är för korta.</li>
+      <li>Handlingarna slås ihop till en enda <code>maskad.pdf</code> först efter att de gjorts om till bild.</li>
+    </ul>
+    <p>Misslyckas något av detta skrivs ingenting till den mapp ni valt. En svart ruta som någon ritat men som inte tagits fram av motorn går inte att exportera.</p>
+    <p>Samma kontroller finns i det <a href="kontrollera.html">fristående kontrollverktyget</a>, så att mottagaren kan upprepa dem.</p>
+  </div>
+</section>
+
+<section class="band vit">
+  <div class="inne las">
+    <h2>Vad Utlämna inte gör</h2>
+    <ul class="rak">
+      <li><strong>Fattar inga sekretessbeslut.</strong> Programmet föreslår träffar. Handläggaren väljer Maskera eller Behåll, och måste bekräfta det innan paketet kan skapas.</li>
+      <li><strong>Hittar inte allt.</strong> Personnummer, samordningsnummer, e-post och telefonnummer kontrolleras mot datum, kontrollsiffra eller form. Konton hittas bara på rader med etikett. Namn hittas efter etiketter som &quot;Barnet:&quot; och &quot;Vårdnadshavare:&quot;, och därefter i resten av ärendet, eller om de står i ordlistan. Ett namn som varken står efter en etikett eller i ordlistan hittas inte.</li>
+      <li><strong>Läser inte skannade sidor felfritt.</strong> OCR kan läsa fel och kan dela ett nummer över två rader. Appen varnar på varje OCR-tolkad fil: läs sidan, lita inte bara på listan.</li>
+      <li><strong>Föreslår inte namn efter tjänsteroller,</strong> som &quot;Socialsekreterare:&quot;. Det är en avvägning vi gjort. Handläggaren kan lägga till dem i ordlistan.</li>
+      <li><strong>Bedömer inte lagrum.</strong> Handläggaren kan ange lagrum per maskning, och loggen sammanställer dem som underlag. Beslutet och dess motivering är handläggarens.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inne las">
+    <h2>Läget idag</h2>
+    <p>Vi har byggt för att kunna visa det här, men vi vill vara tydliga med vad som är provat.</p>
+    <div class="tabellram">
+      <table>
+        <thead><tr><th scope="col">Vad</th><th scope="col">Läge</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Kontrollerna på en skannad testakt</th><td class="ok">Provade. Falsk maskning underkänns och äkta godkänns.</td></tr>
+          <tr><th scope="row">Kontrollverktyget som färdig fil</th><td class="nej">Under bygge. Publiceras med kontrollsumma när det är provat.</td></tr>
+          <tr><th scope="row">Hela kedjan mot den motorversion vi låser</th><td class="nej">Ej klart. Provas före första piloten.</td></tr>
+          <tr><th scope="row">Installation på en låst Windows-dator, signerad</th><td class="nej">Ej klart. Görs tillsammans med pilotkommunen.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="liten dov">Vi uppdaterar tabellen när det ändras.</p>
+  </div>
+</section>
+
+</main>
+{{fot}}
+</body>
+</html>

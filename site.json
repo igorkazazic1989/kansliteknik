@@ -1,0 +1,19 @@
+{
+  "_om": "Fyll i alla EJ-IFYLLT innan lansering. 'node scripts/bygg.mjs --release' vägrar bygga så länge något står kvar, så att sidan inte påstår något vi inte vet. När företaget finns: sätt 'bolag' till true och fyll i orgnr, momsnr och adress. Då publiceras också prissidan.",
+  "varumarke": "Kansliteknik",
+  "agare": "Igor Kazazic",
+  "bolag": false,
+  "visa_priser": true,
+  "foretag": "Kansliteknik",
+  "orgnr": "",
+  "momsnr": "",
+  "adress": "",
+  "epost": "kontakt@kansliteknik.se",
+  "doman": "kansliteknik.se",
+  "hosting": "Vercel (amerikanskt bolag, globalt nätverk)",
+  "host_loggar": true,
+  "logg_dagar": "7",
+  "kv_version": "0.1.0",
+  "signerad": false,
+  "pilot": true
+}

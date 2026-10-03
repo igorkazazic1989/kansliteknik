@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Utlämna från Kansliteknik: maskning som går att kontrollera</title>
+<meta name="description" content="Utlämna hjälper registratorn att pröva en handling och maska den på riktigt. Texten tas bort ur filen, allt körs på den egna datorn, och mottagaren kan kontrollera resultatet själv.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="stil.css">
+</head>
+<body>
+<a class="hoppa" href="#innehall">Hoppa till innehållet</a>
+{{topp}}
+{{pilotband}}
+<main id="innehall">
+
+<section class="band">
+  <div class="inne hero">
+    <div>
+      <h1>Maskning som går att kontrollera</h1>
+      <p class="ingress">Utlämna hjälper registratorn att pröva en handling, maska det som ska bort och lämna ut ett paket. Texten tas bort ur filen, den döljs inte. Allt körs på den egna datorn, och mottagaren kan kontrollera resultatet själv.</p>
+      <div class="knappar">
+        {{cta_primar}}
+        <a class="knapp" href="kontrollera.html">Kontrollera en fil</a>
+      </div>
+    </div>
+
+    <figure class="blad-figur">
+      <div class="blad" role="img" aria-label="Utdrag ur en påhittad socialnämndshandling. Barnets namn och personnummer, vårdnadshavarens namn, adressen, telefonnumret och e-postadressen är täckta av svarta fält. Skolans namn är markerat gult som en träff att pröva.">
+        <div class="titel" aria-hidden="true">Socialnämnden, protokoll §112</div>
+        <div class="meta" aria-hidden="true">Påhittad akt. Sammanträdesdatum 2026-03-14</div>
+        <div aria-hidden="true">
+          <p>Barnet: <span class="m b62"></span>, <span class="m b72"></span></p>
+          <p>Vårdnadshavare: <span class="m b66"></span></p>
+          <p>Adress: <span class="m b84"></span>, 200 00 Malmö</p>
+          <p>Skola: <mark class="g">Exempelskolan</mark>, klass 7B</p>
+          <p>Kontakt: <span class="m b56"></span>, <span class="m b94"></span></p>
+          <p>Beslut: Utredning inleds.</p>
+        </div>
+        <div class="teckenforklaring" aria-hidden="true"><span class="m"></span>maskad &nbsp;&nbsp; <span class="g"></span>att pröva</div>
+      </div>
+      <figcaption class="liten dov bildtext">De svarta fälten är tomma i sidans källkod. Det är så filen ska bli: ingen text under dem.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band vit">
+  <div class="inne">
+    <h2>Ett svart fält är inte en maskning</h2>
+    <p class="las">I många verktyg ritas en svart ruta ovanpå texten. Under rutan ligger texten kvar och går att markera, kopiera och söka fram. Men även när texten är borta kan det gå fel: om rutan är en aning för kort syns sista siffran.</p>
+
+    <p class="tabelltitel" id="tre-satt">Samma skannade testakt, tre sätt att maska</p>
+    <div class="tabellram">
+      <table class="stapla" aria-labelledby="tre-satt">
+        <thead><tr><th scope="col">Sätt</th><th scope="col">Textlager</th><th scope="col">Ctrl+F hittar numret</th><th scope="col">Delar av numret syns</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Svarta rutor ovanpå texten</th><td data-etikett="Textlager" class="nej">Finns kvar</td><td data-etikett="Ctrl+F hittar numret" class="nej">Ja</td><td data-etikett="Delar av numret syns">Nej</td></tr>
+          <tr><th scope="row">Rutor efter OCR-lagrets mått, sidan plattad till bild</th><td data-etikett="Textlager" class="ok">Borta</td><td data-etikett="Ctrl+F hittar numret" class="ok">Nej</td><td data-etikett="Delar av numret syns" class="nej">Ja, rutorna täckte 92–97 % av bläcket</td></tr>
+          <tr><th scope="row">Utlämna: rutan växer till hela ordet, sidan plattas till bild, och varje ruta mäts</th><td data-etikett="Textlager" class="ok">Borta</td><td data-etikett="Ctrl+F hittar numret" class="ok">Nej</td><td data-etikett="Delar av numret syns" class="ok">Nej, mäts vid export</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="liten dov">Mätt på en påhittad skannad akt. Första raden fångar <a href="kontrollera.html">kontrollverktyget</a>. Andra raden fångas av pixelkontrollen i Utlämna vid export, som kräver att allt bläck under rutan är täckt.</p>
+
+    <div class="jamfor">
+      <figure class="fel">
+        <img src="bilder/fore.png" width="1111" height="291" loading="lazy" alt="Utdrag ur en påhittad skannad akt. Svarta fält täcker personnummer, namn, adress och telefonnummer, men sista siffran i flera nummer och delar av adressen och e-postadressen syns bredvid fälten.">
+        <figcaption><strong>Rutor efter OCR-lagrets mått</strong>Texten är borta, men siffror och bokstäver sticker ut ur rutorna. Numren är inte helt täckta.</figcaption>
+      </figure>
+      <figure class="ratt">
+        <img src="bilder/efter.png" width="1111" height="291" loading="lazy" alt="Samma utdrag. Svarta fält täcker hela personnummer, namn, adress, telefonnummer och e-postadress. Bara skolans namn är kvar.">
+        <figcaption><strong>Rutor som följer ordets bläck</strong>Hela orden är täckta. Skolans namn står kvar, för det är en träff som handläggaren ska pröva.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inne">
+    <h2>Så arbetar handläggaren</h2>
+    <ol class="steg">
+      <li><strong>Skapa ärendet</strong>Diarienummer, datum, vad som begärs och handläggare. Sökande registreras som anonym.</li>
+      <li><strong>Lägg till handlingar</strong>Släpp PDF-filer. Skannade sidor tolkas med OCR på datorn.</li>
+      <li><strong>Pröva träffarna</strong>Utlämna föreslår personnummer, samordningsnummer, telefonnummer, e-post, kontonummer, namn efter etiketter som &quot;Barnet:&quot;, adresser och skolor. Du väljer Maskera eller Behåll för varje träff och kan ange lagrum.</li>
+      <li><strong>Godkänn</strong>Du bekräftar att du har prövat träffarna. Först då går det att skapa paketet.</li>
+      <li><strong>Utlämningspaketet</strong>En maskad PDF där texten är borta, en logg som PDF och JSON, och ett kvitto med kontrollsummor.</li>
+    </ol>
+    <div class="ruta">
+      <p><strong>Förslag, inte beslut.</strong> Utlämna hittar mönster. Du avgör vad som ska bort. Programmet fattar inga sekretessbeslut, och det står i gränssnittet, inte i en fotnot.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band bla">
+  <div class="inne las">
+    <h2>Mottagaren kan kontrollera filen själv</h2>
+    <p>Programmet som kontrollerar en utlämnad fil är gratis och kan hämtas av vem som helst. Ett dataskyddsombud eller en jurist behöver inte Utlämna för att se om filen innehåller dold text, kommentarer, bilagor eller tidigare versioner, eller om den ändrats sedan utlämningen.</p>
+    <div class="knappar"><a class="knapp primar" href="kontrollera.html">Kontrollera en fil</a></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="inne">
+    <h2>Inget lämnar datorn, och inget lämnar den här sidan</h2>
+    <div class="tva">
+      <div>
+        <h3>Utlämna</h3>
+        <ul class="rak">
+          <li>Ingen uppladdning, inget konto, ingen telemetri.</li>
+          <li>Maskningsmotorn är ett lokalt program som bara lyssnar på den egna datorn.</li>
+          <li>Inga uppdateringar över nätet. En ny version kommer som installationsfil.</li>
+          <li>Loggen anger motorns version och kontrollsumma för varje utlämning.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Den här webbplatsen</h3>
+        <ul class="rak">
+          <li>Inga kakor, inga skript, ingen mätning av besökare.</li>
+          <li>Inga externa typsnitt, bilder eller tjänster.</li>
+          <li>Ligger hos {{hosting}}.</li>
+          <li>Inget formulär och ingen uppladdning. <a href="integritet.html">Läs mer.</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ruta varning">
+      <p><strong>Ladda aldrig upp en handling hos oss.</strong> Den här sidan kan inte ta emot filer, och vi vill inte ha handlingar i e-post heller. Behöver vi se ett fel ber vi om en påhittad testfil.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band vit">
+  <div class="inne las">
+    <h2>Prova utan att skicka något</h2>
+    <p>Provet är en nedladdad app och en skannad testakt. Testakten kan du hämta redan nu. Appen får pilotkommuner som installationsfil från oss, och den fungerar utan nät.</p>
+    <p class="liten dov">Alla personer och nummer i testakten är påhittade. Personnumren har födelsedatum år 2031, så de kan inte tillhöra någon verklig person.</p>
+    <div class="knappar"><a class="knapp" href="exempel/testakt-skannad.pdf" download>Hämta testakten (PDF)</a></div>
+  </div>
+</section>
+
+{{kontakt_block}}
+
+</main>
+{{fot}}
+</body>
+</html>

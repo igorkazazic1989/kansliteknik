@@ -1,1 +1,6 @@
+dist/
+node_modules/
+__pycache__/
+# Kontrollverktyget byggs i produktens repo och kopieras hit vid release.
+src/nedladdning/*.exe
 skarmbild-*.png
