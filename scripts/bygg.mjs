@@ -111,7 +111,7 @@ const fot = () => `<footer class="fot"><div class="inne">
 <div><h2>Kontakt</h2>${
   site.bolag
     ? `<p>${esc(site.foretag)}</p><p>Org.nr ${esc(site.orgnr)}</p>${/^ej\b/i.test(site.momsnr) ? "" : `<p>Momsreg.nr ${esc(site.momsnr)}</p>`}<p>${esc(site.adress)}</p>`
-    : `<p>${esc(site.varumarke)} drivs av ${esc(site.agare)}.</p><p>Inget företag är registrerat än.</p>`
+    : `<p>${esc(site.varumarke)} drivs av ${esc(site.agare)}.</p>`
 }<p><a href="mailto:${esc(site.epost)}">${esc(site.epost)}</a></p></div>
 </div></footer>`;
 
@@ -145,7 +145,7 @@ const flat = {
   pris_rubrik: site.bolag ? "Licenser för kommuner" : "Planerade licenser för kommuner",
   pris_villkor: site.bolag
     ? `<p>Alla priser är exklusive moms. Licensen faktureras en gång per år, som e&#8209;faktura.</p>`
-    : `<div class="ruta"><p><strong>Planerade priser efter pilotfasen.</strong> Priserna är information, inte ett erbjudande. Inget köp och inget avtal ingås via den här sidan. Avtal tecknas först när ${esc(site.varumarke)} är registrerat som företag. Alla priser är exklusive moms.</p></div><p>Vill du veta mer, eller vara med som pilotkommun, <a href="mailto:${esc(site.epost)}?subject=${encodeURIComponent("Priser Utlämna")}">skriv till oss</a>.</p>`,
+    : `<div class="ruta"><p><strong>Planerade priser efter pilotfasen.</strong> Priserna är information, inte ett erbjudande. Inget köp och inget avtal ingås via den här sidan. Avtal tecknas efter pilotfasen. Alla priser är exklusive moms.</p></div><p>Vill du veta mer, eller vara med som pilotkommun, <a href="mailto:${esc(site.epost)}?subject=${encodeURIComponent("Priser Utlämna")}">skriv till oss</a>.</p>`,
   ansvarig: site.bolag
     ? `${esc(site.foretag)}, organisationsnummer ${esc(site.orgnr)}, ${esc(site.adress)}`
     : `${esc(site.agare)}, som driver ${esc(site.varumarke)}. Kontakt sker via e-post`,
