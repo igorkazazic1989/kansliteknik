@@ -94,15 +94,13 @@ const mailtoBody = (subject, body) => `mailto:${esc(site.epost)}?subject=${encod
 // Mejlet som öppnas när någon vill säga vilka planerade funktioner som skulle hjälpa mest. Inget formulär, inget skript.
 const planeratBody = [
   "Hej,", "",
-  "Det här skulle hjälpa oss mest (skriv numren, till exempel 1 och 3):", "", "",
-  "1. Förslagen förklarar sig",
-  "2. Lagrum för varje maskning",
-  "3. Underlag när en handling lämnas ut delvis",
-  "4. Säkerhetsunderlag för vår IT", "",
+  "Det här skulle hjälpa oss mest (skriv numret, eller båda):", "", "",
+  "1. Underlag när en handling lämnas ut delvis",
+  "2. Säkerhetsunderlag för vår IT", "",
   "Det här saknar vi också:", "",
   "Organisation (valfritt):", "",
 ].join("\r\n");
-const planeratCta = `<a class="knapp primar" href="${mailtoBody("Planerat Utlämna: det här skulle hjälpa oss", planeratBody)}">Svara med era två viktigaste</a>`;
+const planeratCta = `<a class="knapp primar" href="${mailtoBody("Planerat Utlämna: det här skulle hjälpa oss", planeratBody)}">Svara med det ni behöver mest</a>`;
 // Prissidan kan visas som information även innan företaget finns ("visa_priser").
 // Då står priserna som planerade, och sidan säger att inget avtal ingås här.
 // Ingen köpknapp, bara kontakt för mer information.
