@@ -56,7 +56,9 @@ copy(src, dist);
 const exeName = "utlamna-kontroll.exe";
 const exePath = path.join(dist, "nedladdning", exeName);
 let download;
+let kvStatus = `<td class="nej">Under bygge. Publiceras med kontrollsumma när det är provat.</td>`;
 if (fs.existsSync(exePath)) {
+  kvStatus = `<td class="ok">Byggd och provad på Windows av vårt byggsystem, men ännu inte av en kund. <a href="kontrollera.html">Hämta den här.</a></td>`;
   const bytes = fs.readFileSync(exePath);
   const sha = crypto.createHash("sha256").update(bytes).digest("hex");
   fs.writeFileSync(`${exePath}.sha256`, `${sha}  ${exeName}\n`);
@@ -156,7 +158,7 @@ for (const [file] of pages) {
   const p = path.join(dist, file);
   if (!fs.existsSync(p)) continue;
   let html = fs.readFileSync(p, "utf8");
-  const blocks = { topp: topp(file), fot: fot(), pilotband, cta_primar: cta, kontakt_block: kontakt, nedladdning_block: download };
+  const blocks = { kv_status: kvStatus, topp: topp(file), fot: fot(), pilotband, cta_primar: cta, kontakt_block: kontakt, nedladdning_block: download };
   // Block först (de innehåller själva {{epost}} m.fl. via esc, inga fler tokens), sedan fält.
   html = html.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in blocks ? blocks[k] : k in flat ? flat[k] : m));
   const left = html.match(/\{\{\w+\}\}/g);
