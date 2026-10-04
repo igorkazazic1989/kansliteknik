@@ -171,7 +171,8 @@ for (const [file] of pages) {
   const p = path.join(dist, file);
   if (!fs.existsSync(p)) continue;
   let html = fs.readFileSync(p, "utf8");
-  const blocks = { kv_mening: kvMening, planerat_cta: planeratCta, kv_status: kvStatus, topp: topp(file), fot: fot(), pilotband, cta_primar: cta, kontakt_block: kontakt, nedladdning_block: download };
+  const sakerhetCta = `<a class="knapp primar" href="${mailto("Säkerhetsunderlag Utlämna")}">Be om säkerhetsunderlaget</a>`;
+  const blocks = { sakerhet_cta: sakerhetCta, kv_mening: kvMening, planerat_cta: planeratCta, kv_status: kvStatus, topp: topp(file), fot: fot(), pilotband, cta_primar: cta, kontakt_block: kontakt, nedladdning_block: download };
   // Block först (de innehåller själva {{epost}} m.fl. via esc, inga fler tokens), sedan fält.
   html = html.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in blocks ? blocks[k] : k in flat ? flat[k] : m));
   const left = html.match(/\{\{\w+\}\}/g);

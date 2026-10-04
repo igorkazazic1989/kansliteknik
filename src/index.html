@@ -83,7 +83,7 @@
       <li><strong>Lägg till handlingar</strong>Släpp PDF-filer. Skannade sidor tolkas med OCR på datorn.</li>
       <li><strong>Pröva träffarna</strong>Utlämna föreslår personnummer, samordningsnummer, telefonnummer, e-post, kontonummer, namn efter etiketter som &quot;Barnet:&quot;, adresser och skolor. Vid varje träff står varför den markerades: kontrollsiffran stämmer, den står efter etiketten &quot;Barnet:&quot;, eller den finns i er ordlista. Du väljer Maskera eller Behåll och kan ange lagrum. Ärendet kan kräva lagrum för varje maskning, och programmet frågar innan en hel sida maskas.</li>
       <li><strong>Godkänn</strong>Du bekräftar att du har prövat träffarna. Först då går det att skapa paketet.</li>
-      <li><strong>Utlämningspaketet</strong>En maskad PDF där texten är borta, en logg som PDF och JSON, och ett kvitto med kontrollsummor.</li>
+      <li><strong>Utlämningspaketet</strong>En maskad PDF där texten är borta, en logg som PDF och JSON, ett underlag till beslutet och ett kvitto med kontrollsummor. Underlaget visar vad som maskats, med vilket lagrum och på vilka sidor, utan de maskade uppgifterna. Programmet fattar inget beslut.</li>
     </ol>
     <div class="ruta">
       <p><strong>Förslag, inte beslut.</strong> Utlämna hittar mönster. Du avgör vad som ska bort. Programmet fattar inga sekretessbeslut, och det står i gränssnittet, inte i en fotnot.</p>
@@ -139,15 +139,11 @@
 </section>
 
 <section class="band">
-  <div class="inne">
-    <h2>Det vi tänker bygga härnäst</h2>
-    <p class="las"><strong>Inget av det här finns än.</strong> Det är sådant vi tror att en registrator eller en IT-avdelning kan behöva, och vi bygger det som kommuner säger att de saknar. Vilket av dem skulle hjälpa er mest?</p>
-    <ol class="steg">
-      <li><strong>Underlag när en handling lämnas ut delvis</strong>En sammanställning av vad som maskats och med vilket lagrum, som handläggaren eller juristen kan använda i sitt beslut. Programmet fattar inget beslut.</li>
-      <li><strong>Säkerhetsunderlag för er IT</strong>Komponentförteckning, kontrollsummor, resultatet av nätverksprovet och en beskrivning av vilka data som rör sig vart, samlat i ett dokument som går att lägga i er prövning.</li>
-    </ol>
-    <div class="knappar">{{planerat_cta}}</div>
-    <p class="liten dov">Knappen öppnar ett mejl till oss med rutorna förifyllda. Skriv bara vilket nummer ni vill ha, eller något annat ni saknar. Skicka inga handlingar.</p>
+  <div class="inne las">
+    <h2>Säkerhetsunderlag för er IT</h2>
+    <p>IT-avdelningen kan få ett dokument som är skapat ur programmets källkod och bygge, så att det stämmer med den version ni granskar. Det innehåller komponentförteckning, kontrollsummor för installationsfilerna, vilka nätverksprov som körs i varje bygge, vilka filer programmet skriver och var, och de kända begränsningarna. Begränsningarna står med, bland annat att databasen inte är krypterad och att installationsfilerna inte är signerade än.</p>
+    <div class="knappar">{{sakerhet_cta}}</div>
+    <p class="liten dov">Knappen öppnar ett mejl till oss. Dokumentet skickas som PDF.</p>
   </div>
 </section>
 
