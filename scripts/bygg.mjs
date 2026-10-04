@@ -56,9 +56,11 @@ copy(src, dist);
 const exeName = "utlamna-kontroll.exe";
 const exePath = path.join(dist, "nedladdning", exeName);
 let download;
+let kvKort = `Ett gratis kontrollprogram som mottagaren kan köra själv är under bygge. Det läser bara filen och skickar inget över nätet.`;
 let kvMening = `Programmet som kontrollerar en utlämnad fil är gratis. Det är under bygge och publiceras här, med kontrollsumma, när det är provat. Ett dataskyddsombud eller en jurist behöver inte Utlämna för att kontrollera en fil.`;
 let kvStatus = `<td class="nej">Under bygge. Publiceras med kontrollsumma när det är provat.</td>`;
 if (fs.existsSync(exePath)) {
+  kvKort = `Mottagaren kan kontrollera filen själv med ett gratis program som bara läser filen och inte skickar något över nätet.`;
   kvMening = `Programmet som kontrollerar en utlämnad fil är gratis och kan hämtas av vem som helst. Ett dataskyddsombud eller en jurist behöver inte Utlämna för att se om filen innehåller dold text, kommentarer, bilagor eller tidigare versioner, eller om den ändrats sedan utlämningen. Det fungerar på en PDF från vilket program som helst.`;
   kvStatus = `<td class="ok">Byggd och provad på Windows av vårt byggsystem, men ännu inte av en kund. <a href="kontrollera.html">Hämta den här.</a></td>`;
   const bytes = fs.readFileSync(exePath);
@@ -172,7 +174,7 @@ for (const [file] of pages) {
   if (!fs.existsSync(p)) continue;
   let html = fs.readFileSync(p, "utf8");
   const sakerhetCta = `<a class="knapp primar" href="${mailto("Säkerhetsunderlag Utlämna")}">Be om säkerhetsunderlaget</a>`;
-  const blocks = { sakerhet_cta: sakerhetCta, kv_mening: kvMening, planerat_cta: planeratCta, kv_status: kvStatus, topp: topp(file), fot: fot(), pilotband, cta_primar: cta, kontakt_block: kontakt, nedladdning_block: download };
+  const blocks = { sakerhet_cta: sakerhetCta, kv_mening: kvMening, kv_kort: kvKort, planerat_cta: planeratCta, kv_status: kvStatus, topp: topp(file), fot: fot(), pilotband, cta_primar: cta, kontakt_block: kontakt, nedladdning_block: download };
   // Block först (de innehåller själva {{epost}} m.fl. via esc, inga fler tokens), sedan fält.
   html = html.replace(/\{\{(\w+)\}\}/g, (m, k) => (k in blocks ? blocks[k] : k in flat ? flat[k] : m));
   const left = html.match(/\{\{\w+\}\}/g);
